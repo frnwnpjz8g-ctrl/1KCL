@@ -8,8 +8,8 @@
   <meta name="CocoaVersion" content="2685.3">
   <style type="text/css">
     body {background-color: #000000}
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; min-height: 28.0px}
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 24.0px Arial; color: #ffffff; -webkit-text-stroke: #ffffff; min-height: 28.0px}
     span.s1 {font-kerning: none}
   </style>
 </head>
@@ -23,21 +23,20 @@
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>html, body {</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: 0;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>height: 100%;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>width: 100%;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>height: 100%;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: black;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>overflow: hidden;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>video {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>#videoBG {</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>position: fixed;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>top: 0;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>left: 0;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>width: 100%;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>height: 100%;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>object-fit: cover;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>z-index: -1;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>#clickOverlay {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>#startOverlay {</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>position: fixed;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>top: 0;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>left: 0;</span></p>
@@ -57,25 +56,24 @@
 <p class="p1"><span class="s1">&lt;/head&gt;</span></p>
 <p class="p1"><span class="s1">&lt;body&gt;</span></p>
 <p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;video id="video" autoplay muted loop playsinline&gt;</span></p>
+<p class="p1"><span class="s1">&lt;video id="videoBG" autoplay muted loop playsinline preload="auto"&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;source src="video.mp4" type="video/mp4"&gt;</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>Dein Browser unterstützt keine Videowiedergabe.</span></p>
 <p class="p1"><span class="s1">&lt;/video&gt;</span></p>
 <p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;div id="clickOverlay"&gt;Klicke, um Ton zu starten&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;div id="startOverlay"&gt;✨ Klicke, um Ton zu aktivieren ✨&lt;/div&gt;</span></p>
 <p class="p2"><span class="s1"></span><br></p>
 <p class="p1"><span class="s1">&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const video = document.getElementById('video');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const overlay = document.getElementById('clickOverlay');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const video = document.getElementById('videoBG');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const overlay = document.getElementById('startOverlay');</span></p>
 <p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>// Autoplay stumm versuchen</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>video.play().catch(() =&gt; console.log("Autoplay blockiert"));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>// Versuche stumm abzuspielen</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>video.play().catch(() =&gt; console.log('Autoplay blockiert'));</span></p>
 <p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>// Klick auf Overlay → Ton einschalten, Overlay ausblenden</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>overlay.addEventListener('click', () =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>video.muted = false;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>video.muted = false; // Ton einschalten</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>video.play();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>overlay.style.display = 'none';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>overlay.style.display = 'none'; // Hinweis verschwindet</span></p>
 <p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>});</span></p>
 <p class="p1"><span class="s1">&lt;/script&gt;</span></p>
 <p class="p2"><span class="s1"></span><br></p>
